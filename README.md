@@ -19,4 +19,4 @@
 | freetype-2.5.5.tar.gz | [download.savannah.gnu.org](http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz) | 7448edfbd40c7aa5088684b0a3edb2b8 |
 | expat-2.1.0.tar.gz | [netcologne.dl.sourceforge.net](http://netcologne.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz) | dd7dab7a5fea97d2a6a43f511449b7cd |
 | fontconfig-2.11.1.tar.bz2 | [www.freedesktop.org](http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2) | 824d000eb737af6e16c826dd3b2d6c90 |
-
+| cairo-1.14.0.tar.xz | [cairographics.org](http://cairographics.org/releases/cairo-1.14.0.tar.xz) | fc3a5edeba703f906f2241b394f0cced |

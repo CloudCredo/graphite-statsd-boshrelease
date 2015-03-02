@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -x
+
+export FONTCONFIG_CFLAGS="-I/var/vcap/packages/fontconfig/include"
+export PKG_CONFIG_PATH=/var/vcap/packages/libpng/lib/pkgconfig:/var/vcap/packages/pixman/lib/pkgconfig:/var/vcap/packages/freetype/lib/pkgconfig:/var/vcap/packages/fontconfig/lib/pkgconfig
+
+tar -xJf cairo/cairo-1.14.0.tar.xz
+
+cd cairo-1.14.0
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install

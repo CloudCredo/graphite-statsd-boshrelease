@@ -1,0 +1,12 @@
+---
+name: cairo
+
+dependencies:
+  - expat
+  - fontconfig
+  - freetype
+  - libpng
+  - pixman
+
+files:
+  - cairo/cairo-1.14.0.tar.xz
