@@ -1,0 +1,7 @@
+---
+name: sqlite
+
+dependencies: {}
+
+files:
+  - sqlite/sqlite-autoconf-3080803.tar.gz

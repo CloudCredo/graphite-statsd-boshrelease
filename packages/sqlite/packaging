@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf sqlite/sqlite-autoconf-3080803.tar.gz
+
+cd sqlite-autoconf-3080803
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install
