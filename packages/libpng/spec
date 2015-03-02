@@ -1,0 +1,7 @@
+---
+name: libpng
+
+dependencies: {}
+
+files:
+  - libpng/libpng-1.6.16.tar.gz

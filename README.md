@@ -14,4 +14,5 @@
 | pysqlite-2.6.3.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.6.3.tar.gz) | 7ff1cedee74646b50117acff87aa1cfa |
 | Django-1.3.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/D/Django/Django-1.3.tar.gz) | 1b8f76e91c27564708649671f329551f |
 | django-tagging-0.3.1.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/d/django-tagging/django-tagging-0.3.1.tar.gz) | a0855f2b044db15f3f8a025fa1016ddf |
+| libpng-1.6.16.tar.gz | [prdownloads.sourceforge.net](http://prdownloads.sourceforge.net/libpng/libpng-1.6.16.tar.gz?download) | 1a4ad377919ab15b54f6cb6a3ae2622d |
 
