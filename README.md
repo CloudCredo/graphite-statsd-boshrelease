@@ -17,4 +17,5 @@
 | libpng-1.6.16.tar.gz | [prdownloads.sourceforge.net](http://prdownloads.sourceforge.net/libpng/libpng-1.6.16.tar.gz?download) | 1a4ad377919ab15b54f6cb6a3ae2622d |
 | pixman-0.32.6.tar.gz | [cairographics.org](http://cairographics.org/releases/pixman-0.32.6.tar.gz) | 3a30859719a41bd0f5cccffbfefdd4c2 |
 | freetype-2.5.5.tar.gz | [download.savannah.gnu.org](http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz) | 7448edfbd40c7aa5088684b0a3edb2b8 |
+| expat-2.1.0.tar.gz | [netcologne.dl.sourceforge.net](http://netcologne.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz) | dd7dab7a5fea97d2a6a43f511449b7cd |
 
