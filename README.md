@@ -13,4 +13,5 @@
 | sqlite-autoconf-3080803.tar.gz | [www.sqlite.org](http://www.sqlite.org/2015/sqlite-autoconf-3080803.tar.gz) | 51272e875879ee893e51070b07c33888 |
 | pysqlite-2.6.3.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.6.3.tar.gz) | 7ff1cedee74646b50117acff87aa1cfa |
 | Django-1.3.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/D/Django/Django-1.3.tar.gz) | 1b8f76e91c27564708649671f329551f |
+| django-tagging-0.3.1.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/d/django-tagging/django-tagging-0.3.1.tar.gz) | a0855f2b044db15f3f8a025fa1016ddf |
 
