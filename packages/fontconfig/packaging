@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -x
+
+export PKG_CONFIG_PATH=/var/vcap/packages/freetype/lib/pkgconfig:/var/vcap/packages/expat/lib/pkgconfig
+
+tar -xjf fontconfig/fontconfig-2.11.1.tar.bz2
+
+cd fontconfig-2.11.1
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install

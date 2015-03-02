@@ -1,0 +1,9 @@
+---
+name: fontconfig
+
+dependencies:
+  - expat
+  - freetype
+
+files:
+  - fontconfig/fontconfig-2.11.1.tar.bz2
