@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -e
+
+case $1 in
+
+  start)
+    # Setup PATH, PYTHONPATH and LD_LIBRARY_PATH
+    for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
+    for lib in $(ls -d /var/vcap/packages/*/lib/python2.7/site-packages); do export PYTHONPATH=$lib:$PYTHONPATH; done
+    export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+    # Setup required directories
+    mkdir -p /var/vcap/sys/log/carbon
+    mkdir -p /var/vcap/sys/run/carbon
+    mkdir -p /var/vcap/store/graphite
+
+    # Copy templated files to the correct locations
+    cp /var/vcap/jobs/carbon/conf/*.conf /var/vcap/packages/carbon/conf/
+
+    # Set file permissions
+    chown -RH vcap:vcap /var/vcap/sys/log/carbon
+    chown -RH vcap:vcap /var/vcap/sys/run/carbon
+    chown -RH vcap:vcap /var/vcap/store/graphite
+
+    exec chpst -u vcap:vcap python /var/vcap/packages/carbon/bin/carbon-cache.py \
+      --config=/var/vcap/packages/carbon/conf/carbon.conf start \
+      1>> /var/vcap/sys/log/carbon/carbon_ctl.stdout.log \
+      2>> /var/vcap/sys/log/carbon/carbon_ctl.stderr.log
+    ;;
+
+  stop)
+    kill -QUIT $(cat /var/vcap/sys/run/carbon/carbon-cache-a.pid)
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    ;;
+
+esac
+exit 0

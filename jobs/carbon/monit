@@ -1,0 +1,5 @@
+check process carbon
+  with pidfile /var/vcap/sys/run/carbon/carbon-cache-a.pid
+  start program "/var/vcap/jobs/carbon/bin/carbon_ctl start" with timeout 30 seconds
+  stop program "/var/vcap/jobs/carbon/bin/carbon_ctl stop"
+  group vcap

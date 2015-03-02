@@ -1,0 +1,89 @@
+---
+name: carbon
+
+packages:
+  - carbon
+  - mocker
+  - python
+  - twisted
+  - whisper
+  - zope.interface
+
+templates:
+  bin/carbon_ctl.erb: bin/carbon_ctl
+  config/carbon.conf.erb: conf/carbon.conf
+  config/storage-schemas.conf.erb: conf/storage-schemas.conf
+
+properties:
+  carbon.cache.enable_log_rotation:
+    description: Set this to True to enable daily log rotation.
+    default: True
+  carbon.cache.max_cache_size:
+    description: Limit the size of the cache to avoid swapping or becoming CPU bound.
+    default: inf
+  carbon.cache.max_updates_per_second:
+    description: Limits the number of whisper update_many() calls per second.
+    default: 500
+  carbon.cache.max_creates_per_minute:
+    description: Softly limits the number of whisper files that get created each minute.
+    default: 50
+
+  carbon.cache.line_receiver_interface:
+    description: IP address the line receiver should listen on.
+    default: 0.0.0.0
+  carbon.cache.line_receiver_port:
+    description: Port the line receiver should listen on.
+    default: 2003
+
+  carbon.cache.enable_udp_listener:
+    description: Set this to True to enable the UDP listener.
+    default: false
+  carbon.cache.udp_receiver_interface:
+    description: IP address the UDP receiver should listen on.
+    default: 0.0.0.0
+  carbon.cache.udp_receiver_port:
+    description: Port the UDP receiver should listen on.
+    default: 2003
+
+  carbon.cache.pickle_receiver_interface:
+    description: IP address the pickle receiver should listen on.
+    default: 0.0.0.0
+  carbon.cache.pickle_receiver_port:
+    description: Port the pickle receiver should listen on.
+    default: 2004
+
+  carbon.cache.cache_query_interface:
+    description: IP address the cache query receiver should listen on.
+    default: 0.0.0.0
+  carbon.cache.cache_query_port:
+    description: Port the cache query receiver should listen on.
+    default: 7002
+
+  carbon.cache.log_listener_connections:
+    description: Set to False to disable logging of successful connections.
+    default: True
+  carbon.cache.log_updates:
+    description: Set to True to log updates (careful - may degrade performance).
+    default: False
+  carbon.cache.log_cache_hits:
+    description: Set to True to log cache hits (careful - may degrade performance).
+    default: False
+  carbon.cache.log_cache_queue_sorts:
+    description: Set to True to log cache queue sorts (careful - may degrade performance).
+    default: True
+
+  carbon.cache.use_insecure_unpickler:
+    description: Set this to True to revert to the old-fashioned insecure unpickler.
+    default: False
+  carbon.cache.use_flow_control:
+    description: Set this to False to drop datapoints received after the cache reaches MAX_CACHE_SIZE
+    default: True
+  carbon.cache.cache_write_strategy:
+    description: Set the cache write strategy. Can be one of 'sorted', 'max' or 'naive'.
+    default: sorted
+  carbon.cache.whisper_autoflush:
+    description: Set this to True to tell whisper to write synchronously.
+    default: False
+  carbon.cache.whisper_fallocate_create:
+    description: Only beneficial on linux filesystems that support the fallocate system call.
+    default: True
