@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf pixman/pixman-0.32.6.tar.gz
+
+cd pixman-0.32.6
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install

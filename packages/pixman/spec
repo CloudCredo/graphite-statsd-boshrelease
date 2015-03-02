@@ -1,0 +1,7 @@
+---
+name: pixman
+
+dependencies: {}
+
+files:
+  - pixman/pixman-0.32.6.tar.gz
