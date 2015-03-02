@@ -1,0 +1,8 @@
+---
+name: django
+
+dependencies:
+  - python
+
+files:
+  - django/Django-1.3.tar.gz

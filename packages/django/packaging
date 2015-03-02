@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/python/bin:$PATH
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+tar -zxf django/Django-1.3.tar.gz
+
+cd Django-1.3
+python setup.py install --prefix=${BOSH_INSTALL_TARGET}
