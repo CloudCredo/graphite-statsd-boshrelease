@@ -1,0 +1,7 @@
+---
+name: freetype
+
+dependencies: {}
+
+files:
+  - freetype/freetype-2.5.5.tar.gz

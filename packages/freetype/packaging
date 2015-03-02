@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf freetype/freetype-2.5.5.tar.gz
+
+cd freetype-2.5.5
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install

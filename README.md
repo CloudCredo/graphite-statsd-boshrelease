@@ -16,4 +16,5 @@
 | django-tagging-0.3.1.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/d/django-tagging/django-tagging-0.3.1.tar.gz) | a0855f2b044db15f3f8a025fa1016ddf |
 | libpng-1.6.16.tar.gz | [prdownloads.sourceforge.net](http://prdownloads.sourceforge.net/libpng/libpng-1.6.16.tar.gz?download) | 1a4ad377919ab15b54f6cb6a3ae2622d |
 | pixman-0.32.6.tar.gz | [cairographics.org](http://cairographics.org/releases/pixman-0.32.6.tar.gz) | 3a30859719a41bd0f5cccffbfefdd4c2 |
+| freetype-2.5.5.tar.gz | [download.savannah.gnu.org](http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz) | 7448edfbd40c7aa5088684b0a3edb2b8 |
 
