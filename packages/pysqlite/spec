@@ -1,0 +1,9 @@
+---
+name: pysqlite
+
+dependencies:
+  - python
+  - sqlite
+
+files:
+  - pysqlite/pysqlite-2.6.3.tar.gz

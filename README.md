@@ -11,4 +11,5 @@
 | mocker-1.1.1.tar.bz2 | [pypi.python.org](https://pypi.python.org/packages/source/m/mocker/mocker-1.1.1.tar.bz2) | 0bd9f83268e16aef2130fa89e2a4839f |
 | carbon-0.9.12.tar.gz | [github.com](https://github.com/graphite-project/carbon/archive/0.9.12.tar.gz) | 674c7376be70b07a90eecf013dad6600 |
 | sqlite-autoconf-3080803.tar.gz | [www.sqlite.org](http://www.sqlite.org/2015/sqlite-autoconf-3080803.tar.gz) | 51272e875879ee893e51070b07c33888 |
+| pysqlite-2.6.3.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.6.3.tar.gz) | 7ff1cedee74646b50117acff87aa1cfa |
 
