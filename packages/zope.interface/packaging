@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/python/bin:$PATH
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+tar -zxf zope.interface/zope.interface-4.1.2.tar.gz
+
+cd zope.interface-4.1.2
+python setup.py install --prefix=${BOSH_INSTALL_TARGET}
