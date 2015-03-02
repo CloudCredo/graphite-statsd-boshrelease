@@ -1,0 +1,8 @@
+---
+name: mocker
+
+dependencies:
+  - python
+
+files:
+  - mocker/mocker-1.1.1.tar.bz2
