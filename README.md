@@ -9,4 +9,5 @@
 | Twisted-11.1.0.tar.bz2 | [pypi.python.org](https://pypi.python.org/packages/source/T/Twisted/Twisted-11.1.0.tar.bz2) | 972f3497e6e19318c741bf2900ffe31c |
 | whisper-0.9.12.tar.gz | [github.com](https://github.com/graphite-project/whisper/archive/0.9.12.tar.gz) | fcaa34d128d13278ba1b8e23443e0871 |
 | mocker-1.1.1.tar.bz2 | [pypi.python.org](https://pypi.python.org/packages/source/m/mocker/mocker-1.1.1.tar.bz2) | 0bd9f83268e16aef2130fa89e2a4839f |
+| carbon-0.9.12.tar.gz | [github.com](https://github.com/graphite-project/carbon/archive/0.9.12.tar.gz) | 674c7376be70b07a90eecf013dad6600 |
 

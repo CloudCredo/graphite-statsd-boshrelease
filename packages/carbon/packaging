@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/python/bin:$PATH
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+tar -zxf carbon/carbon-0.9.12.tar.gz
+
+cd carbon-0.9.12
+python setup.py install --prefix=${BOSH_INSTALL_TARGET} --install-lib=${BOSH_INSTALL_TARGET}/lib

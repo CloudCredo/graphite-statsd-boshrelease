@@ -1,0 +1,8 @@
+---
+name: carbon
+
+dependencies:
+  - python
+
+files:
+  - carbon/carbon-0.9.12.tar.gz
