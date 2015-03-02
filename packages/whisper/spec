@@ -1,0 +1,8 @@
+---
+name: whisper
+
+dependencies:
+  - python
+
+files:
+  - whisper/whisper-0.9.12.tar.gz
