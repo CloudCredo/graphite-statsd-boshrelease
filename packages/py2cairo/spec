@@ -1,0 +1,14 @@
+---
+name: py2cairo
+
+dependencies:
+  - cairo
+  - expat
+  - fontconfig
+  - freetype
+  - libpng
+  - pixman
+  - python
+
+files:
+  - py2cairo/py2cairo-1.10.0.tar.bz2

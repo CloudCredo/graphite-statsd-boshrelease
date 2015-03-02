@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/python/bin:$PATH
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+export PKG_CONFIG_PATH=/var/vcap/packages/cairo/lib/pkgconfig:/var/vcap/packages/pixman/lib/pkgconfig:/var/vcap/packages/fontconfig/lib/pkgconfig:/var/vcap/packages/freetype/lib/pkgconfig:/var/vcap/packages/expat/lib/pkgconfig:/var/vcap/packages/libpng/lib/pkgconfig
+
+tar -xjf py2cairo/py2cairo-1.10.0.tar.bz2
+
+cd py2cairo-1.10.0
+./waf configure --prefix=${BOSH_INSTALL_TARGET}
+./waf build
+./waf install
