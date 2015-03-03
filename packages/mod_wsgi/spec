@@ -1,0 +1,9 @@
+---
+name: mod_wsgi
+
+dependencies:
+  - httpd
+  - python
+
+files:
+  - mod_wsgi/mod_wsgi-4.4.9.tar.gz

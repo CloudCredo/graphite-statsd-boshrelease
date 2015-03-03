@@ -27,3 +27,4 @@
 | apr-1.5.1.tar.gz | [mirror.vorboss.net](http://mirror.vorboss.net/apache//apr/apr-1.5.1.tar.gz) | d3538d67e6455f48cc935d8f0a50a1c3 |
 | apr-util-1.5.4.tar.gz | [mirror.vorboss.net](http://mirror.vorboss.net/apache//apr/apr-util-1.5.4.tar.gz) | 866825c04da827c6e5f53daff5569f42 |
 | pcre-8.36.tar.gz | [garr.dl.sourceforge.net](http://garr.dl.sourceforge.net/project/pcre/pcre/8.36/pcre-8.36.tar.gz) | ff7b4bb14e355f04885cf18ff4125c98 |
+| mod_wsgi-4.4.9.tar.gz | [github.com](https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.9.tar.gz) | afc9e65587cab4aab3b2fa8b8c41ceae |

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf mod_wsgi/mod_wsgi-4.4.9.tar.gz
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+cd mod_wsgi-4.4.9
+
+./configure --prefix=${BOSH_INSTALL_TARGET} --with-apxs=/var/vcap/packages/httpd/bin/apxs --with-python=/var/vcap/packages/python/bin/python
+make && make install
+
+# For some reason, this installs mod_wsgi.so to /var/vcap/packages/httpd/modules/mod_wsgi.so
+# ¯\_(ツ)_/¯
+mkdir -p ${BOSH_INSTALL_TARGET}/lib
+mv /var/vcap/packages/httpd/modules/mod_wsgi.so ${BOSH_INSTALL_TARGET}/lib
