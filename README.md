@@ -22,3 +22,4 @@
 | cairo-1.14.0.tar.xz | [cairographics.org](http://cairographics.org/releases/cairo-1.14.0.tar.xz) | fc3a5edeba703f906f2241b394f0cced |
 | py2cairo-1.10.0.tar.bz2 | [www.cairographics.org](http://www.cairographics.org/releases/py2cairo-1.10.0.tar.bz2) | 20337132c4ab06c1146ad384d55372c5 |
 | pytz-2014.10.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/p/pytz/pytz-2014.10.tar.gz) | eb1cb941a20c5b751352c52486aa1dd7 |
+| 0.9.12.tar.gz | [github.com](https://github.com/graphite-project/graphite-web/archive/0.9.12.tar.gz) | c09f19fc0076cbadec64039f161bafc0 |
