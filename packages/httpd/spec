@@ -1,0 +1,10 @@
+---
+name: httpd
+
+dependencies:
+  - pcre
+
+files:
+  - apr/apr-1.5.1.tar.gz
+  - apr-util/apr-util-1.5.4.tar.gz
+  - httpd/httpd-2.4.12.tar.gz

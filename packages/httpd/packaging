@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf httpd/httpd-2.4.12.tar.gz
+tar -C httpd-2.4.12/srclib/ -zxf apr/apr-1.5.1.tar.gz
+tar -C httpd-2.4.12/srclib/ -zxf apr-util/apr-util-1.5.4.tar.gz
+mv httpd-2.4.12/srclib/apr-1.5.1 httpd-2.4.12/srclib/apr
+mv httpd-2.4.12/srclib/apr-util-1.5.4 httpd-2.4.12/srclib/apr-util
+
+cd httpd-2.4.12
+./configure --prefix=${BOSH_INSTALL_TARGET} --enable-so --with-included-apr --with-pcre=/var/vcap/packages/pcre
+make && make install
