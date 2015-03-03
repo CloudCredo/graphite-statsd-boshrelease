@@ -1,0 +1,8 @@
+---
+name: pytz
+
+dependencies:
+  - python
+
+files:
+  - pytz/pytz-2014.10.tar.gz
