@@ -1,0 +1,7 @@
+---
+name: pcre
+
+dependencies: {}
+
+files:
+  - pcre/pcre-8.36.tar.gz

@@ -23,3 +23,4 @@
 | py2cairo-1.10.0.tar.bz2 | [www.cairographics.org](http://www.cairographics.org/releases/py2cairo-1.10.0.tar.bz2) | 20337132c4ab06c1146ad384d55372c5 |
 | pytz-2014.10.tar.gz | [pypi.python.org](https://pypi.python.org/packages/source/p/pytz/pytz-2014.10.tar.gz) | eb1cb941a20c5b751352c52486aa1dd7 |
 | 0.9.12.tar.gz | [github.com](https://github.com/graphite-project/graphite-web/archive/0.9.12.tar.gz) | c09f19fc0076cbadec64039f161bafc0 |
+| pcre-8.36.tar.gz | [garr.dl.sourceforge.net](http://garr.dl.sourceforge.net/project/pcre/pcre/8.36/pcre-8.36.tar.gz) | ff7b4bb14e355f04885cf18ff4125c98 |

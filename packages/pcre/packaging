@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -x
+
+tar -zxf pcre/pcre-8.36.tar.gz
+
+cd pcre-8.36
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install
