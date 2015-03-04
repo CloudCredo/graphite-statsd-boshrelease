@@ -1,0 +1,6 @@
+check process graphite-web
+  with pidfile /var/vcap/sys/run/graphite-web/graphite-web.pid
+  start program "/var/vcap/jobs/graphite-web/bin/graphite-web_ctl start" with timeout 30 seconds
+  stop program "/var/vcap/jobs/graphite-web/bin/graphite-web_ctl stop"
+  group vcap
+  depends on carbon

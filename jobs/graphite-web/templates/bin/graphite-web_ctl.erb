@@ -1,0 +1,74 @@
+#!/bin/bash
+
+set -e
+
+# TODO: Clearly there is too much going on in this file.
+#       Extract some of the setup/configuration steps.
+
+# Setup PATH, PYTHONPATH and LD_LIBRARY_PATH
+for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
+for lib in $(ls -d /var/vcap/packages/*/lib/python2.7/site-packages); do export PYTHONPATH=$lib:$PYTHONPATH; done
+export PYTHONPATH=$PYTHONPATH:/var/vcap/packages/graphite-web/lib
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib:/var/vcap/packages/cairo/lib
+
+case $1 in
+
+  start)
+    # Setup required directories
+    mkdir -p /var/vcap/sys/log/graphite-web
+    mkdir -p /var/vcap/sys/run/graphite-web
+    mkdir -p /var/vcap/store/graphite
+
+    # Copy templated files to the correct locations
+    cp /var/vcap/jobs/graphite-web/conf/dashboard.conf /var/vcap/packages/graphite-web/conf/
+    cp /var/vcap/jobs/graphite-web/conf/graphTemplates.conf /var/vcap/packages/graphite-web/conf/
+    cp /var/vcap/jobs/graphite-web/conf/graphite-vhost.conf /var/vcap/packages/graphite-web/conf/
+    cp /var/vcap/jobs/graphite-web/conf/graphite.wsgi /var/vcap/packages/graphite-web/conf/
+    cp /var/vcap/jobs/graphite-web/conf/httpd.conf /var/vcap/packages/httpd/conf/
+    cp /var/vcap/jobs/graphite-web/conf/local_settings.py /var/vcap/packages/graphite-web/lib/graphite/
+
+    # Set file permissions
+    chown -RH vcap:vcap /var/vcap/sys/log/graphite-web
+    chown -RH vcap:vcap /var/vcap/sys/run/graphite-web
+    chown -RH vcap:vcap /var/vcap/store/graphite
+
+    # Run syncdb (first time only)
+    if [[ ! -f /var/vcap/store/graphite/storage/graphite.db ]] ; then
+      python /var/vcap/packages/graphite-web/lib/graphite/manage.py syncdb --noinput
+      chown vcap:vcap /var/vcap/store/graphite/storage/graphite.db
+    fi
+
+    # Copy mod_wsgi to httpd modules dir
+    if [[ ! -f /var/vcap/packages/httpd/modules/mod_wsgi.so ]] ; then
+      cp /var/vcap/packages/mod_wsgi/lib/mod_wsgi.so /var/vcap/packages/httpd/modules/
+    fi
+
+    # Ensure WSGISocketPrefix dir has been created
+    if [[ ! -d /var/vcap/packages/httpd/run ]] ; then
+      mkdir -p /var/vcap/packages/httpd/run
+    fi
+
+    # Ensure various other required dirs/files exist
+    touch /var/vcap/store/graphite/storage/index
+    chown vcap:vcap /var/vcap/store/graphite/storage/index
+    mkdir -p /var/vcap/store/graphite/storage/rrd
+    chown vcap:vcap /var/vcap/store/graphite/storage/rrd
+    mkdir -p /var/vcap/store/graphite/storage/whisper
+    chown vcap:vcap /var/vcap/store/graphite/storage/whisper
+
+    exec chpst -u root:vcap apachectl -f /var/vcap/packages/httpd/conf/httpd.conf -k start \
+      1>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stdout.log \
+      2>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stderr.log
+    ;;
+
+  stop)
+    exec chpst -u root:vcap apachectl -f /var/vcap/packages/httpd/conf/httpd.conf -k stop \
+      1>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stdout.log \
+      2>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stderr.log
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    ;;
+
+esac
+exit 0

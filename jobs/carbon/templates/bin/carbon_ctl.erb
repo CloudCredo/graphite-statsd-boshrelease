@@ -2,14 +2,14 @@
 
 set -e
 
+# Setup PATH, PYTHONPATH and LD_LIBRARY_PATH
+for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
+for lib in $(ls -d /var/vcap/packages/*/lib/python2.7/site-packages); do export PYTHONPATH=$lib:$PYTHONPATH; done
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
 case $1 in
 
   start)
-    # Setup PATH, PYTHONPATH and LD_LIBRARY_PATH
-    for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
-    for lib in $(ls -d /var/vcap/packages/*/lib/python2.7/site-packages); do export PYTHONPATH=$lib:$PYTHONPATH; done
-    export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
-
     # Setup required directories
     mkdir -p /var/vcap/sys/log/carbon
     mkdir -p /var/vcap/sys/run/carbon

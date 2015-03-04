@@ -1,0 +1,33 @@
+---
+name: graphite-web
+
+packages:
+  - cairo
+  - django
+  - django-tagging
+  - fontconfig
+  - freetype
+  - graphite-web
+  - httpd
+  - libpng
+  - mod_wsgi
+  - pcre
+  - pixman
+  - py2cairo
+  - pysqlite
+  - python
+  - pytz
+  - sqlite
+  - twisted
+  - whisper
+
+templates:
+  bin/graphite-web_ctl.erb: bin/graphite-web_ctl
+  config/dashboard.conf.erb: conf/dashboard.conf
+  config/graphite.wsgi.erb: conf/graphite.wsgi
+  config/graphTemplates.conf.erb: conf/graphTemplates.conf
+  config/local_settings.py.erb: conf/local_settings.py
+  config/httpd.conf.erb: conf/httpd.conf
+  config/graphite-vhost.conf.erb: conf/graphite-vhost.conf
+
+properties: {}
