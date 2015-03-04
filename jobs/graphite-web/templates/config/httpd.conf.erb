@@ -33,6 +33,10 @@ ServerAdmin you@example.com
 
 <Directory />
     AllowOverride none
+    Require all denied
+</Directory>
+<Directory /var/vcap/packages/graphite-web>
+    AllowOverride none
     Require all granted
 </Directory>
 
