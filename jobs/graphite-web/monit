@@ -3,4 +3,3 @@ check process graphite-web
   start program "/var/vcap/jobs/graphite-web/bin/graphite-web_ctl start" with timeout 30 seconds
   stop program "/var/vcap/jobs/graphite-web/bin/graphite-web_ctl stop"
   group vcap
-  depends on carbon

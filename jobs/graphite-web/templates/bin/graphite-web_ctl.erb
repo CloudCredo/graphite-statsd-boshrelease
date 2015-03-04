@@ -4,6 +4,7 @@ set -e
 
 # TODO: Clearly there is too much going on in this file.
 #       Extract some of the setup/configuration steps.
+#       Also probs not a good idea to chown -R certain dirs.
 
 # Setup PATH, PYTHONPATH and LD_LIBRARY_PATH
 for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
@@ -17,7 +18,17 @@ case $1 in
     # Setup required directories
     mkdir -p /var/vcap/sys/log/graphite-web
     mkdir -p /var/vcap/sys/run/graphite-web
-    mkdir -p /var/vcap/store/graphite
+    mkdir -p /var/vcap/store/graphite/storage/rrd
+    mkdir -p /var/vcap/store/graphite/storage/whisper
+    touch /var/vcap/store/graphite/storage/index
+
+    # Set file permissions
+    chown -RH vcap:vcap /var/vcap/sys/log/graphite-web
+    chown -RH vcap:vcap /var/vcap/sys/run/graphite-web
+    chown -RH vcap:vcap /var/vcap/store/graphite
+    chown vcap:vcap /var/vcap/store/graphite/storage/index
+    chown vcap:vcap /var/vcap/store/graphite/storage/rrd
+    chown vcap:vcap /var/vcap/store/graphite/storage/whisper
 
     # Copy templated files to the correct locations
     cp /var/vcap/jobs/graphite-web/conf/dashboard.conf /var/vcap/packages/graphite-web/conf/
@@ -26,11 +37,6 @@ case $1 in
     cp /var/vcap/jobs/graphite-web/conf/graphite.wsgi /var/vcap/packages/graphite-web/conf/
     cp /var/vcap/jobs/graphite-web/conf/httpd.conf /var/vcap/packages/httpd/conf/
     cp /var/vcap/jobs/graphite-web/conf/local_settings.py /var/vcap/packages/graphite-web/lib/graphite/
-
-    # Set file permissions
-    chown -RH vcap:vcap /var/vcap/sys/log/graphite-web
-    chown -RH vcap:vcap /var/vcap/sys/run/graphite-web
-    chown -RH vcap:vcap /var/vcap/store/graphite
 
     # Run syncdb (first time only)
     if [[ ! -f /var/vcap/store/graphite/storage/graphite.db ]] ; then
@@ -47,14 +53,6 @@ case $1 in
     if [[ ! -d /var/vcap/packages/httpd/run ]] ; then
       mkdir -p /var/vcap/packages/httpd/run
     fi
-
-    # Ensure various other required dirs/files exist
-    touch /var/vcap/store/graphite/storage/index
-    chown vcap:vcap /var/vcap/store/graphite/storage/index
-    mkdir -p /var/vcap/store/graphite/storage/rrd
-    chown vcap:vcap /var/vcap/store/graphite/storage/rrd
-    mkdir -p /var/vcap/store/graphite/storage/whisper
-    chown vcap:vcap /var/vcap/store/graphite/storage/whisper
 
     exec chpst -u root:vcap apachectl -f /var/vcap/packages/httpd/conf/httpd.conf -k start \
       1>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stdout.log \
