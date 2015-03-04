@@ -31,6 +31,14 @@ templates:
   config/graphite-vhost.conf.erb: conf/graphite-vhost.conf
 
 properties:
+
+  graphite-web.secret_key:
+    description: Set this to a long, random unique string to use as a secret key for this install.
+    default: THECAKEISALIE
+  graphite-web.time_zone:
+    description: Set your local timezone.
+    default: Europe/London
+
   graphite-web.httpd.server_name:
     description: The name the server uses to identify itself.
     default: www.my-graphite.com

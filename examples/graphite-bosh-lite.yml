@@ -30,6 +30,7 @@ jobs:
 
 properties:
   graphite-web:
+    time_zone: Europe/London
     httpd:
       port: 80
     wsgi:
