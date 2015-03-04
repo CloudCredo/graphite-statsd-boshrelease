@@ -30,4 +30,23 @@ templates:
   config/httpd.conf.erb: conf/httpd.conf
   config/graphite-vhost.conf.erb: conf/graphite-vhost.conf
 
-properties: {}
+properties:
+  graphite-web.httpd.server_name:
+    description: The name the server uses to identify itself.
+    default: www.my-graphite.com
+  graphite-web.httpd.port:
+    description: The httpd listen port.
+    default: 80
+  graphite-web.httpd.server_admin:
+    description: Your address, where problems with the server should be e-mailed.
+    default: you@example.com
+
+  graphite-web.wsgi.processes:
+    description: The number of daemon processes that should be started in the process group.
+    default: 5
+  graphite-web.wsgi.threads:
+    description: The number of threads to be created to handle requests in each daemon process within the process group.
+    default: 5
+  graphite-web.wsgi.inactivity-timeout:
+    description: The time (s) before the daemon process is shutdown and restarted after the daemon process has entered an idle state.
+    default: 120

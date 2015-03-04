@@ -1,5 +1,5 @@
 name: graphite
-director_uuid: cf8dc1fc-9c42-4ffc-96f1-fbad983a6ce6
+director_uuid: bf3dbdbd-50df-4588-8056-b57889d5ddca
 
 releases:
 - name: graphite
@@ -19,6 +19,13 @@ jobs:
   - name: default
     static_ips:
     - 10.244.2.2
+
+properties:
+  graphite-web:
+    httpd:
+      port: 80
+    wsgi:
+      inactivity-timeout: 60
 
 meta:
   environment: graphite

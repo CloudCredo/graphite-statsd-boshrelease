@@ -1,5 +1,5 @@
 PidFile "/var/vcap/sys/run/graphite-web/graphite-web.pid"
-Listen 80
+Listen <%= p('graphite-web.httpd.port') %>
 
 LoadModule authn_file_module modules/mod_authn_file.so
 LoadModule authn_core_module modules/mod_authn_core.so
@@ -22,14 +22,15 @@ LoadModule status_module modules/mod_status.so
 LoadModule autoindex_module modules/mod_autoindex.so
 LoadModule dir_module modules/mod_dir.so
 LoadModule alias_module modules/mod_alias.so
+LoadModule wsgi_module modules/mod_wsgi.so
+
+WSGIPythonHome /var/vcap/packages/python
+WSGISocketPrefix run/wsgi
 
 <IfModule unixd_module>
     User vcap
     Group vcap
 </IfModule>
-
-ServerAdmin you@example.com
-#ServerName www.example.com:80
 
 <Directory />
     AllowOverride none

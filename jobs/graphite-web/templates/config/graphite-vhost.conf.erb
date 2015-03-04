@@ -1,19 +1,11 @@
-<IfModule !wsgi_module.c>
-    LoadModule wsgi_module modules/mod_wsgi.so
-</IfModule>
-
-WSGIPythonHome /var/vcap/packages/python
-WSGISocketPrefix run/wsgi
-
-<VirtualHost *:80>
-        ServerName graphite
+<VirtualHost *:<%= p('graphite-web.httpd.port') %>>
+        ServerName <%= p('graphite-web.httpd.server_name') %>
+        ServerAdmin <%= p('graphite-web.httpd.server_admin') %>
         DocumentRoot "/var/vcap/packages/graphite-web/lib"
-        ErrorLog /var/vcap/sys/log/graphite-web/httpd_error.log
-        CustomLog /var/vcap/sys/log/graphite-web/httpd_access.log common
+        ErrorLog /var/vcap/sys/log/graphite-web/<%= p('graphite-web.httpd.server_name') %>_httpd_error.log
+        CustomLog /var/vcap/sys/log/graphite-web/<%= p('graphite-web.httpd.server_name') %>_httpd_access.log common
 
-        # I've found that an equal number of processes & threads tends
-        # to show the best performance for Graphite (ymmv).
-        WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120 python-path=/var/vcap/packages/zope.interface/lib/python2.7/site-packages:/var/vcap/packages/whisper/lib/python2.7/site-packages:/var/vcap/packages/twisted/lib/python2.7/site-packages:/var/vcap/packages/pytz/lib/python2.7/site-packages:/var/vcap/packages/python/lib/python2.7/site-packages:/var/vcap/packages/pysqlite/lib/python2.7/site-packages:/var/vcap/packages/py2cairo/lib/python2.7/site-packages:/var/vcap/packages/mocker/lib/python2.7/site-packages:/var/vcap/packages/django-tagging/lib/python2.7/site-packages:/var/vcap/packages/django/lib/python2.7/site-packages
+        WSGIDaemonProcess graphite processes=<%= p('graphite-web.wsgi.processes') %> threads=<%= p('graphite-web.wsgi.threads') %> display-name='%{GROUP}' inactivity-timeout=<%= p('graphite-web.wsgi.inactivity-timeout') %> python-path=/var/vcap/packages/zope.interface/lib/python2.7/site-packages:/var/vcap/packages/whisper/lib/python2.7/site-packages:/var/vcap/packages/twisted/lib/python2.7/site-packages:/var/vcap/packages/pytz/lib/python2.7/site-packages:/var/vcap/packages/python/lib/python2.7/site-packages:/var/vcap/packages/pysqlite/lib/python2.7/site-packages:/var/vcap/packages/py2cairo/lib/python2.7/site-packages:/var/vcap/packages/mocker/lib/python2.7/site-packages:/var/vcap/packages/django-tagging/lib/python2.7/site-packages:/var/vcap/packages/django/lib/python2.7/site-packages
         WSGIProcessGroup graphite
         WSGIApplicationGroup %{GLOBAL}
         WSGIImportScript /var/vcap/packages/graphite-web/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
@@ -34,5 +26,4 @@ WSGISocketPrefix run/wsgi
                 Order deny,allow
                 Allow from all
         </Directory>
-
 </VirtualHost>
