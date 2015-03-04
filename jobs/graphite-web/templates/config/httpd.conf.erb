@@ -49,6 +49,7 @@ ServerAdmin you@example.com
 </Files>
 
 LogLevel warn
+ErrorLog "/var/vcap/sys/log/graphite-web/default_httpd_error.log"
 
 <IfModule log_config_module>
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
