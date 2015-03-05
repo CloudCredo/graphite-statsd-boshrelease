@@ -50,3 +50,4 @@ There is much to be done:
 | apr-util-1.5.4.tar.gz | [mirror.vorboss.net](http://mirror.vorboss.net/apache//apr/apr-util-1.5.4.tar.gz) | 866825c04da827c6e5f53daff5569f42 |
 | pcre-8.36.tar.gz | [garr.dl.sourceforge.net](http://garr.dl.sourceforge.net/project/pcre/pcre/8.36/pcre-8.36.tar.gz) | ff7b4bb14e355f04885cf18ff4125c98 |
 | mod_wsgi-4.4.9.tar.gz | [github.com](https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.9.tar.gz) | afc9e65587cab4aab3b2fa8b8c41ceae |
+| node-v0.12.0.tar.gz | [nodejs.org](http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz) | 62c8d9c74c8f68193f60e4cba020eb48 |

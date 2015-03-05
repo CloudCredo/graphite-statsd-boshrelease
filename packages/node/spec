@@ -1,0 +1,8 @@
+---
+name: node
+
+dependencies:
+  - python
+
+files:
+  - node/node-v0.12.0.tar.gz

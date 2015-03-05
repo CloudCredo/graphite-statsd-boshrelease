@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/python/bin:$PATH
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib
+
+tar -zxf node/node-v0.12.0.tar.gz
+
+cd node-v0.12.0
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make && make install
