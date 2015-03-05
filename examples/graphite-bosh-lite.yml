@@ -20,6 +20,8 @@ jobs:
     release: graphite
   - name: graphite-web
     release: graphite
+  - name: statsd
+    release: graphite
   instances: 1
   resource_pool: small_z1
   persistent_disk: 2048

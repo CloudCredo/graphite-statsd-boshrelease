@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+case $1 in
+
+  start)
+
+    # Setup required directories
+    mkdir -p /var/vcap/sys/log/statsd
+    mkdir -p /var/vcap/sys/run/statsd
+
+    # Copy templated files to the correct locations
+    cp /var/vcap/jobs/statsd/conf/localConfig.js /var/vcap/packages/statsd/localConfig.js
+
+    # Set file permissions
+    chown -H vcap:vcap /var/vcap/sys/log/statsd
+    chown -H vcap:vcap /var/vcap/sys/run/statsd
+
+    start-stop-daemon --start --quiet -m \
+      --pidfile /var/vcap/sys/run/statsd/statsd.pid \
+      --startas /var/vcap/packages/node/bin/node \
+      --chuid vcap:vcap \
+      --background \
+      --no-close \
+      --chdir /var/vcap/packages/statsd \
+      -- /var/vcap/packages/statsd/stats.js /var/vcap/packages/statsd/localConfig.js \
+      1>> /var/vcap/sys/log/statsd/statsd_ctl.stdout.log \
+      2>> /var/vcap/sys/log/statsd/statsd_ctl.stderr.log
+    ;;
+
+  stop)
+    start-stop-daemon --stop --quiet --retry=0/0/KILL/5 \
+      --pidfile /var/vcap/sys/run/statsd/statsd.pid \
+      1>> /var/vcap/sys/log/statsd/statsd_ctl.stdout.log \
+      2>> /var/vcap/sys/log/statsd/statsd_ctl.stderr.log
+
+    rm -f /var/vcap/sys/run/statsd/statsd.pid
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    ;;
+
+esac
+exit 0

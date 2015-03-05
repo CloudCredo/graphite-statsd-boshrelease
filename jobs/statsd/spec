@@ -1,0 +1,15 @@
+---
+name: statsd
+
+packages:
+  - node
+  - statsd
+
+templates:
+  bin/statsd_ctl.erb: bin/statsd_ctl
+  config/config.js.erb: conf/localConfig.js
+
+properties:
+  statsd.port:
+    description: Port to listen for messages on over UDP.
+    default: 8125
