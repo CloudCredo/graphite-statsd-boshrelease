@@ -1,0 +1,8 @@
+---
+name: statsd
+
+dependencies:
+  - node
+
+files:
+  - statsd/statsd-0.7.2.tar.gz

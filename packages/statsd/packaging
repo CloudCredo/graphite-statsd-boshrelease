@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e -x
+
+export PATH=/var/vcap/packages/node/bin:$PATH
+
+tar -zxf statsd/statsd-0.7.2.tar.gz
+
+cd statsd-0.7.2
+npm install
+cd ../
+
+cp -a statsd-0.7.2/* $BOSH_INSTALL_TARGET
