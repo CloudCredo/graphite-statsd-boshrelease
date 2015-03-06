@@ -14,7 +14,7 @@ There is an example [bosh-lite](https://github.com/cloudfoundry/bosh-lite) deplo
 There is much to be done:
 
 * Add blobs to blobstore
-* Allow storage-schemas and storage-aggregation to be configured via properties
+* Allow storage-aggregation to be configured via properties
 * Add HTTPS and authentication
 * Allow alternate DBs to be used
 * Add examples + Getting Started guide

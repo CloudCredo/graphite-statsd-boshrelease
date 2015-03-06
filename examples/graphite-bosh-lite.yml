@@ -31,6 +31,14 @@ jobs:
     - 10.244.2.2
 
 properties:
+  carbon:
+    storage_schemas:
+      - name: "my_storage_schema"
+        pattern: "^my\\.metrics\\.*" # NB: Note that double escapes - this will evaluate to "my\.metrics\.*"
+        retentions: "60s:1d"
+      - name: "my_storage_schema_2"
+        pattern: "metrics$"
+        retentions: "15s:7d,1m:21d,15m:5y"
   graphite-web:
     time_zone: Europe/London
     httpd:

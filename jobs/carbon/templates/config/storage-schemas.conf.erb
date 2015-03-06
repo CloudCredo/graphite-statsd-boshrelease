@@ -5,6 +5,12 @@
 #  pattern = regex
 #  retentions = timePerPoint:timeToStore, timePerPoint:timeToStore, ...
 
+<% p('carbon.storage_schemas').each do |storage_schema| %>
+[<%= storage_schema['name'] %>]
+pattern = <%= storage_schema['pattern'] %>
+retentions = <%= storage_schema['retentions'] %>
+<% end %>
+
 # Carbon's internal metrics. This entry should match what is specified in
 # CARBON_METRIC_PREFIX and CARBON_METRIC_INTERVAL settings
 [carbon]

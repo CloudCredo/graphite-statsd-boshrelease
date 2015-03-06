@@ -87,3 +87,10 @@ properties:
   carbon.cache.whisper_fallocate_create:
     description: Only beneficial on linux filesystems that support the fallocate system call.
     default: True
+
+  carbon.storage_schemas:
+    description: An array of storage schemas. Each storage schema must specify 'name', 'pattern' and 'retentions'.
+    default:
+      - name: "my_storage_schema"
+        pattern: "^my\\.metrics\\.*"
+        retentions: "60s:1d"
