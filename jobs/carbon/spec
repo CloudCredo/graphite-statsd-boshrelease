@@ -12,6 +12,7 @@ packages:
 templates:
   bin/carbon_ctl.erb: bin/carbon_ctl
   config/carbon.conf.erb: conf/carbon.conf
+  config/storage-aggregation.conf.erb: conf/storage-aggregation.conf
   config/storage-schemas.conf.erb: conf/storage-schemas.conf
 
 properties:
@@ -94,3 +95,10 @@ properties:
       - name: "my_storage_schema"
         pattern: "^my\\.metrics\\.*"
         retentions: "60s:1d"
+  carbon.storage_aggregations:
+    description: An array of storage aggregation methods. Each storage schema must specify 'name', 'pattern', 'xFilesFactor' and 'aggregationMethod'.
+    default:
+      - name: "my_storage_aggregation"
+        pattern: "^my\\.metrics\\.*"
+        xFilesFactor: "0.5"
+        aggregationMethod: "average"
