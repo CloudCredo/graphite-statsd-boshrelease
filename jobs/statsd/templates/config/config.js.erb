@@ -103,4 +103,8 @@ Optional Variables:
 , graphiteHost: "127.0.0.1"
 , port: <%= p('statsd.port') %>
 , backends: [ "./backends/graphite" ]
+, graphite: {
+    legacyNamespace: false
+  }
+, flushInterval: 10000
 }
