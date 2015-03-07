@@ -13,7 +13,6 @@ There is an example [bosh-lite](https://github.com/cloudfoundry/bosh-lite) deplo
 
 There is much to be done:
 
-* Add blobs to blobstore
 * Add HTTPS and authentication
 * Allow alternate DBs to be used
 * Add examples + Getting Started guide
