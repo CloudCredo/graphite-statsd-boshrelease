@@ -29,10 +29,30 @@ pattern = \.max$
 xFilesFactor = 0.1
 aggregationMethod = max
 
-[sum]
+[count]
 pattern = \.count$
 xFilesFactor = 0
 aggregationMethod = sum
+
+[lower]
+pattern = \.lower(_\d+)?$
+xFilesFactor = 0.1
+aggregationMethod = min
+
+[upper]
+pattern = \.upper(_\d+)?$
+xFilesFactor = 0.1
+aggregationMethod = max
+
+[sum]
+pattern = \.sum$
+xFilesFactor = 0
+aggregationMethod = sum
+
+[gauges]
+pattern = ^.*\.gauges\..*
+xFilesFactor = 0
+aggregationMethod = last
 
 [default_average]
 pattern = .*
