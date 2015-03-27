@@ -103,3 +103,7 @@ apr-util/apr-util-1.5.4.tar.gz:
   object_id: a0c34873-775d-45d9-8726-770bb638123d
   sha: 72cc3ac693b52fb831063d5c0de18723bc8e0095
   size: 874044
+postgresql/postgresql-9.4.1.tar.gz:
+  object_id: 36833bce-7bc7-4a39-898c-e3b73c0808f2
+  sha: ea9fd6930146526369540dc2ddd38b58cfebc6aa
+  size: 23004433
