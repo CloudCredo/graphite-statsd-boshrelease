@@ -50,4 +50,5 @@ There is much to be done:
 | mod_wsgi-4.4.9.tar.gz | [github.com](https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.9.tar.gz) | afc9e65587cab4aab3b2fa8b8c41ceae |
 | statsd-v0.7.2.tar.gz | [github.com](https://github.com/etsy/statsd/archive/v0.7.2.tar.gz) | fd7e4bec91ce8c765f9a88b81cbf96bb |
 | node-v0.12.0.tar.gz | [nodejs.org](http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz) | 62c8d9c74c8f68193f60e4cba020eb48 |
-| postgresql-9.4.1.tar.gz | [postgresql-9.4.1.tar.gz](https://ftp.postgresql.org/pub/source/v9.4.1/postgresql-9.4.1.tar.gz) | 8df613a83654a32ba5a1008510234931 |
+| postgresql-9.4.1.tar.gz | [ftp.postgresql.org](https://ftp.postgresql.org/pub/source/v9.4.1/postgresql-9.4.1.tar.gz) | 8df613a83654a32ba5a1008510234931 |
+| psycopg2-2.6.tar.gz | [initd.org](http://initd.org/psycopg/tarballs/PSYCOPG-2-6/psycopg2-2.6.tar.gz) | fbbb039a8765d561a1c04969bbae7c74 |

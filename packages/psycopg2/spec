@@ -1,0 +1,9 @@
+---
+name: psycopg2
+
+dependencies:
+  - postgresql
+  - python
+
+files:
+  - psycopg2/psycopg2-2.6.tar.gz
