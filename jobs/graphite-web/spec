@@ -13,6 +13,8 @@ packages:
   - mod_wsgi
   - pcre
   - pixman
+  - postgresql
+  - psycopg2
   - py2cairo
   - pysqlite
   - python
@@ -48,6 +50,30 @@ properties:
   graphite-web.httpd.server_admin:
     description: Your address, where problems with the server should be e-mailed.
     default: you@example.com
+
+  graphite-web.db.engine:
+    description: The database engine to use. Choose from either 'sqlite3' or 'postgresql_psycopg2'.
+    default: sqlite3
+
+  graphite-web.db.name:
+    description: Database name (a filepath if using sqlite3).
+    default: /var/vcap/store/graphite/storage/graphite.db
+
+  graphite-web.db.user:
+    description: Database username (not required if using sqlite3).
+    default: ""
+
+  graphite-web.db.password:
+    description: Database password (not required if using sqlite3).
+    default: ""
+
+  graphite-web.db.host:
+    description: Database host address (not required if using sqlite3).
+    default: ""
+
+  graphite-web.db.port:
+    description: Database port (not required if using sqlite3).
+    default: ""
 
   graphite-web.wsgi.processes:
     description: The number of daemon processes that should be started in the process group.

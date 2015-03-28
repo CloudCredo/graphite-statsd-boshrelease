@@ -10,7 +10,7 @@ set -e
 for bin in $(ls -d /var/vcap/packages/*/bin); do export PATH=$bin:$PATH; done
 for lib in $(ls -d /var/vcap/packages/*/lib/python2.7/site-packages); do export PYTHONPATH=$lib:$PYTHONPATH; done
 export PYTHONPATH=$PYTHONPATH:/var/vcap/packages/graphite-web/lib
-export LD_LIBRARY_PATH=/var/vcap/packages/python/lib:/var/vcap/packages/cairo/lib
+export LD_LIBRARY_PATH=/var/vcap/packages/python/lib:/var/vcap/packages/cairo/lib:/var/vcap/packages/postgresql/lib
 
 case $1 in
 
@@ -38,11 +38,14 @@ case $1 in
     cp /var/vcap/jobs/graphite-web/conf/httpd.conf /var/vcap/packages/httpd/conf/
     cp /var/vcap/jobs/graphite-web/conf/local_settings.py /var/vcap/packages/graphite-web/lib/graphite/
 
-    # Run syncdb (first time only)
-    if [[ ! -f /var/vcap/store/graphite/storage/graphite.db ]] ; then
-      python /var/vcap/packages/graphite-web/lib/graphite/manage.py syncdb --noinput
-      chown vcap:vcap /var/vcap/store/graphite/storage/graphite.db
-    fi
+    # Run syncdb
+    python /var/vcap/packages/graphite-web/lib/graphite/manage.py syncdb --noinput \
+      1>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stdout.log \
+      2>> /var/vcap/sys/log/graphite-web/graphite-web_ctl.stderr.log
+
+    <% if p('graphite-web.db.engine') == 'sqlite3' %>
+    chown vcap:vcap /var/vcap/store/graphite/storage/graphite.db
+    <% end %>
 
     # Copy mod_wsgi to httpd modules dir
     if [[ ! -f /var/vcap/packages/httpd/modules/mod_wsgi.so ]] ; then

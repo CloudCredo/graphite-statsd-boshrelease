@@ -3,7 +3,7 @@
 This BOSH release can be used to deploy [Graphite](http://graphite.readthedocs.org/en/0.9.12/overview.html)! The current release configures a single-node Graphite server with the following:
 
 * 1 x carbon-cache.py process
-* graphite-web using a sqlite DB
+* graphite-web using a sqlite DB (can be configured to use psql)
 * Apache httpd and mod_wsgi
 * statsd
 
@@ -14,7 +14,6 @@ There is an example [bosh-lite](https://github.com/cloudfoundry/bosh-lite) deplo
 There is much to be done:
 
 * Add HTTPS and authentication
-* Allow alternate DBs to be used
 * Add examples + Getting Started guide
 * Add support for multiple carbon processes and > 1 graphite node
 * Add support for memcache/AMQP

@@ -119,8 +119,10 @@ INDEX_FILE = '/var/vcap/store/graphite/storage/index'  # Search index file
 #ldap.set_option(ldap.OPT_X_TLS_KEYFILE, "/etc/ssl/mykey.pem")
 # See http://www.python-ldap.org/ for further details on these options.
 
+<% if p('graphite-web.db.engine') != 'sqlite3' %>
 ## REMOTE_USER authentication. See: https://docs.djangoproject.com/en/dev/howto/auth-remote-user/
-#USE_REMOTE_USER_AUTHENTICATION = True
+USE_REMOTE_USER_AUTHENTICATION = True
+<% end %>
 
 # Override the URL for the login link (e.g. for django_openid_auth)
 #LOGIN_URL = '/account/login'
@@ -149,12 +151,12 @@ INDEX_FILE = '/var/vcap/store/graphite/storage/index'  # Search index file
 #
 DATABASES = {
     'default': {
-        'NAME': '/var/vcap/store/graphite/storage/graphite.db',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
+        'NAME': '<%= p('graphite-web.db.name') %>',
+        'ENGINE': 'django.db.backends.<%= p('graphite-web.db.engine') %>',
+        'USER': '<%= p('graphite-web.db.user') %>',
+        'PASSWORD': '<%= p('graphite-web.db.password') %>',
+        'HOST': '<%= p('graphite-web.db.host') %>',
+        'PORT': '<%= p('graphite-web.db.port') %>'
     }
 }
 
