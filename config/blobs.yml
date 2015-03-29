@@ -107,3 +107,7 @@ postgresql/postgresql-9.4.1.tar.gz:
   object_id: 36833bce-7bc7-4a39-898c-e3b73c0808f2
   sha: ea9fd6930146526369540dc2ddd38b58cfebc6aa
   size: 23004433
+psycopg2/psycopg2-2.6.tar.gz:
+  object_id: 4d5a82a6-23cf-47e9-909e-dfc33c0bd612
+  sha: a3b0c6e07c5d34d949087f08a6c623df03407bbf
+  size: 367972
