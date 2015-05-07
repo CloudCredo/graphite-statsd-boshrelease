@@ -20,7 +20,7 @@ import platform
 import subprocess
 from socket import socket
 
-CARBON_SERVER = '10.244.2.2'
+CARBON_SERVER = '10.244.11.2'
 CARBON_PORT = 2003
 
 delay = 60
