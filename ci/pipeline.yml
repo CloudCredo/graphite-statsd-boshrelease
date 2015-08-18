@@ -1,0 +1,50 @@
+jobs:
+- name: build-rc
+  serial: true
+  plan:
+  - get: graphite-statsd-boshrelease
+    trigger: true
+  - get: version
+    params:
+      bump: minor
+      pre: rc
+  - task: create-bosh-release
+    file: graphite-statsd-boshrelease/ci/create-bosh-release.yml
+  - put: graphite-statsd-boshrelease-rc
+    params:
+      from: create-bosh-release/graphite-statsd-boshrelease/dev_releases/graphite-statsd-boshrelease/graphite-statsd-boshrelease-*.tgz
+
+resources:
+- name: graphite-statsd-boshrelease
+  type: git
+  source:
+    uri: git@github.com:cloudcredo/graphite-statsd-boshrelease.git
+    branch: master
+    private_key: {{graphite-statsd-boshrelease-github-private-key}}
+
+- name: version
+  type: semver
+  source:
+    bucket: graphite-statsd-boshrelease-concourse
+    key: graphite-statsd-boshrelease-version
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+    initial_version: 0.0.1
+
+- name: graphite-statsd-boshrelease-rc
+  type: s3
+  source:
+    bucket: graphite-statsd-boshrelease-concourse
+    region_name: eu-west-1
+    regexp: graphite-statsd-boshrelease-(.*).tgz
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+
+- name: graphite-statsd-boshrelease-final
+  type: s3
+  source:
+    bucket: graphite-statsd-boshreleases
+    region_name: eu-west-1
+    regexp: graphite-statsd-boshrelease-(.*).tgz
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}

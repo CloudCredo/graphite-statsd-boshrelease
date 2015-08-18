@@ -1,0 +1,10 @@
+---
+platform: linux
+image: docker:///teddyking/bosh_cli
+
+inputs:
+  - name: graphite-statsd-boshrelease
+  - name: version
+
+run:
+  path: graphite-statsd-boshrelease/ci/scripts/create-bosh-release
