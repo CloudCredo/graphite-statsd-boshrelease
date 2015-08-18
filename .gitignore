@@ -20,3 +20,5 @@ tmp
 notes.md
 jobs/compile
 examples/bosh-lite-compile.yml
+.bundle
+ci/secrets.yml
