@@ -1,5 +1,11 @@
-VERSION=$(cat version/number)
+#!/bin/bash
+
+set -e
+
+ROOT="$PWD"
+VERSION="$(cat version/number)"
 
 cd graphite-statsd-boshrelease
 
 bosh create release --name graphite-statsd-boshrelease --with-tarball --version $VERSION
+mv dev_releases/graphite-statsd-boshrelease/graphite-statsd-boshrelease-*.tgz "$ROOT"

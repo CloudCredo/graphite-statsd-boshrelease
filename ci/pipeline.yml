@@ -12,7 +12,7 @@ jobs:
     file: graphite-statsd-boshrelease/ci/create-bosh-release.yml
   - put: graphite-statsd-boshrelease-rc
     params:
-      from: create-bosh-release/graphite-statsd-boshrelease/dev_releases/graphite-statsd-boshrelease/graphite-statsd-boshrelease-*.tgz
+      from: create-bosh-release/graphite-statsd-boshrelease-(.*).tgz
 
 resources:
 - name: graphite-statsd-boshrelease
