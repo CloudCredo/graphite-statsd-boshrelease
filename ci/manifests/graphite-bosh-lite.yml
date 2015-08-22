@@ -1,0 +1,145 @@
+name: graphite-statsd-warden
+director_uuid: ~
+
+releases:
+- name: graphite
+  version: latest
+
+jobs:
+- name: graphite
+  templates:
+  - name: carbon
+    release: graphite
+  - name: graphite-web
+    release: graphite
+  - name: statsd
+    release: graphite
+  instances: 1
+  resource_pool: small_z1
+  persistent_disk: 2048
+  networks:
+  - name: default
+    static_ips:
+    - 10.244.11.2
+
+properties:
+  carbon:
+    storage_schemas:
+      - name: "my_storage_schema"
+        pattern: "^my\\.metrics\\.*" # NB: Note the double escapes - this will evaluate to "^my\.metrics\.*"
+        retentions: "60s:1d"
+      - name: "my_storage_schema_2"
+        pattern: "metrics$"
+        retentions: "15s:7d,1m:21d,15m:5y"
+    storage_aggregations:
+      - name: "my_storage_aggregation"
+        pattern: "^my\\.metrics\\.*" # NB: Note the double escapes - this will evaluate to "^my\.metrics\.*"
+        xFilesFactor: "0.5"
+        aggregationMethod: "average"
+      - name: "my_storage_aggregation_2"
+        pattern: "metrics$"
+        xFilesFactor: "0.1"
+        aggregationMethod: "max"
+  graphite-web:
+    time_zone: Europe/London
+    httpd:
+      port: 80
+    wsgi:
+      inactivity-timeout: 60
+
+meta:
+  environment: graphite-statsd-warden
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+
+resource_pools:
+- cloud_properties:
+    name: random
+  name: small_z1
+  network: default
+  size: 1
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: bosh-warden-boshlite-ubuntu-trusty-go_agent
+
+compilation:
+  cloud_properties:
+    name: random
+  network: default
+  reuse_compilation_vms: true
+  workers: 4
+
+update:
+  canaries: 1
+  canary_watch_time: 1000-30000
+  max_in_flight: 50
+  serial: false
+  update_watch_time: 1000-30000
+
+networks:
+- name: default
+  subnets:
+  - cloud_properties:
+      name: random
+    range: 10.244.11.0/30
+    reserved:
+    - 10.244.11.1
+    static:
+    - 10.244.11.2
+  - cloud_properties:
+      name: random
+    range: 10.244.11.4/30
+    reserved:
+    - 10.244.11.5
+    static:
+    - 10.244.11.6
+  - cloud_properties:
+      name: random
+    range: 10.244.11.8/30
+    reserved:
+    - 10.244.11.9
+    static:
+    - 10.244.11.10
+  - cloud_properties:
+      name: random
+    range: 10.244.11.12/30
+    reserved:
+    - 10.244.11.13
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.16/30
+    reserved:
+    - 10.244.11.17
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.20/30
+    reserved:
+    - 10.244.11.21
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.24/30
+    reserved:
+    - 10.244.11.25
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.28/30
+    reserved:
+    - 10.244.11.29
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.32/30
+    reserved:
+    - 10.244.11.33
+    static: []
+  - cloud_properties:
+      name: random
+    range: 10.244.11.36/30
+    reserved:
+    - 10.244.11.37
+    static: []

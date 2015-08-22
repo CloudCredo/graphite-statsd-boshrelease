@@ -13,6 +13,27 @@ jobs:
   - put: graphite-statsd-boshrelease-rc
     params:
       from: create-bosh-release/graphite-statsd-boshrelease-(.*).tgz
+  - put: version
+    params:
+      file: version/number
+
+- name: test-deployment
+  serial: true
+  plan:
+  - do:
+    - aggregate:
+      - get: graphite-statsd-boshrelease
+      - get: graphite-statsd-boshrelease-rc
+        trigger: true
+        passed: [build-rc]
+      - get: lite-stemcell
+  - put: bosh-lite
+    params:
+      manifest: graphite-statsd-boshrelease/ci/manifests/graphite-bosh-lite.yml
+      stemcells:
+      - lite-stemcell/*.tgz
+      releases:
+      - graphite-statsd-boshrelease-rc/graphite-statsd-*.tgz
 
 resources:
 - name: graphite-statsd-boshrelease
@@ -48,3 +69,16 @@ resources:
     regexp: graphite-statsd-boshrelease-(.*).tgz
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
+
+- name: bosh-lite
+  type: bosh-deployment
+  source:
+    target: {{bosh-target}}
+    username: {{bosh-username}}
+    password: {{bosh-password}}
+    deployment: {{bosh-deployment}}
+
+- name: lite-stemcell
+  type: bosh-io-stemcell
+  source:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
