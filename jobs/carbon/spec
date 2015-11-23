@@ -14,6 +14,8 @@ templates:
   config/carbon.conf.erb: conf/carbon.conf
   config/storage-aggregation.conf.erb: conf/storage-aggregation.conf
   config/storage-schemas.conf.erb: conf/storage-schemas.conf
+  config/blacklist.conf.erb: conf/blacklist.conf
+  config/whitelist.conf.erb: conf/whitelist.conf
 
 properties:
   carbon.cache.enable_log_rotation:
@@ -102,3 +104,11 @@ properties:
         pattern: "^my\\.metrics\\.*"
         xFilesFactor: "0.5"
         aggregationMethod: "average"
+
+  carbon.filter.enable:
+    description: Allows any of the carbon daemons to only accept metrics that are explicitly whitelisted and/or to reject blacklisted metrics.
+    default: False
+  carbon.filter.whitelist:
+    description: List of regular expressions of metrics we want to store. If empty, all metrics will be passed through.
+  carbon.filter.blacklist:
+    description: List of regular expressions of metrics we don't want to store.
