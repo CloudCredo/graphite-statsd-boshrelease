@@ -13,3 +13,6 @@ properties:
   statsd.port:
     description: Port to listen for messages on over UDP.
     default: 8125
+  statsd.deleteIdleStats:
+    description: Don't send values to graphite for inactive counters, sets, gauges, or timers.
+    default: false
