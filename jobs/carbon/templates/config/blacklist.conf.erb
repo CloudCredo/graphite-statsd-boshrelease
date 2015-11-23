@@ -1,0 +1,5 @@
+<% if_p('carbon.filter.blacklist') do %>
+<% (p('carbon.filter.blacklist')).each do |line| %>
+<%= line %>
+<% end %>
+<% end %>
