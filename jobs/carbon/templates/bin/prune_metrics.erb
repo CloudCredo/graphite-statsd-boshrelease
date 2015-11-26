@@ -1,0 +1,22 @@
+#!/bin/bash
+
+LOG_FILE=/var/vcap/sys/log/carbon/prune_metrics.log
+WHISPER_DIR=/var/vcap/store/graphite/storage/whisper
+DATE_FORMAT="%F %H:%M:%S %Z"
+LOG_STRING="File:\t[%TY-%Tm-%Td %TH:%TM:%.2TS %TZ] %kkb %h/%f\n"
+PRUNE_DELAY=<%= p('carbon.prune_delay') %>
+
+echo -ne "Now:\t" > ${LOG_FILE}
+echo [$(date +"${DATE_FORMAT}")] Starting to prune files older than ${PRUNE_DELAY} days in ${WHISPER_DIR} >> ${LOG_FILE}
+
+# Delete files older that PRUNE_DELAY days
+find ${WHISPER_DIR} -type f -mtime +${PRUNE_DELAY} -delete -printf "${LOG_STRING}" >> ${LOG_FILE}
+
+echo -ne "Now:\t" >> ${LOG_FILE}
+echo [$(date +"${DATE_FORMAT}")] Starting to delete empty directories in ${WHISPER_DIR} >> ${LOG_FILE}
+
+# Delete empty diretories
+find ${WHISPER_DIR} -type d -empty -delete -printf "${LOG_STRING}" >> ${LOG_FILE}
+
+echo -ne "Now:\t" >> ${LOG_FILE}
+echo [$(date +"${DATE_FORMAT}")] End >> ${LOG_FILE}
