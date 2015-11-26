@@ -11,6 +11,7 @@ packages:
 
 templates:
   bin/carbon_ctl.erb: bin/carbon_ctl
+  bin/prune_metrics.erb: bin/prune_metrics
   config/carbon.conf.erb: conf/carbon.conf
   config/storage-aggregation.conf.erb: conf/storage-aggregation.conf
   config/storage-schemas.conf.erb: conf/storage-schemas.conf
@@ -102,3 +103,7 @@ properties:
         pattern: "^my\\.metrics\\.*"
         xFilesFactor: "0.5"
         aggregationMethod: "average"
+
+  carbon.prune_delay:
+    description: Inactive metrics will be deleted after this number of days.
+    default: -1
