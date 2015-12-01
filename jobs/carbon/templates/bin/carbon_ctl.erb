@@ -23,6 +23,12 @@ case $1 in
     chown -RH vcap:vcap /var/vcap/sys/run/carbon
     chown -RH vcap:vcap /var/vcap/store/graphite
 
+    <% if p('carbon.prune_delay') != -1 %>
+    ln -sf /var/vcap/jobs/carbon/bin/prune_metrics /etc/cron.daily/prune_metrics
+    <% else %>
+    rm -f /etc/cron.daily/prune_metrics
+    <% end %>
+
     exec chpst -u vcap:vcap python /var/vcap/packages/carbon/bin/carbon-cache.py \
       --config=/var/vcap/packages/carbon/conf/carbon.conf start \
       1>> /var/vcap/sys/log/carbon/carbon_ctl.stdout.log \
