@@ -99,7 +99,7 @@ Optional Variables:
 
 */
 {
-  graphitePort: <%= p('carbon.cache.line_receiver_port') %>
+  graphitePort: <%= p('statsd.carbon_cache_line_receiver_port') %>
 , graphiteHost: "127.0.0.1"
 , port: <%= p('statsd.port') %>
 , backends: [ "./backends/graphite" ]
