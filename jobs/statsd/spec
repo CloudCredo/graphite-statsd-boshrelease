@@ -16,3 +16,6 @@ properties:
   statsd.deleteIdleStats:
     description: Don't send values to graphite for inactive counters, sets, gauges, or timers.
     default: false
+  statsd.carbon_cache_line_receiver_port:
+    description: Port the carbon cache line receiver listens on.
+    default: 2003
