@@ -25,7 +25,8 @@ case $1 in
     # Set file permissions
     chown -RH vcap:vcap /var/vcap/sys/log/graphite-web
     chown -RH vcap:vcap /var/vcap/sys/run/graphite-web
-    chown -RH vcap:vcap /var/vcap/store/graphite
+    chown vcap:vcap /var/vcap/store/graphite
+    chown vcap:vcap /var/vcap/store/graphite/storage
     chown vcap:vcap /var/vcap/store/graphite/storage/index
     chown vcap:vcap /var/vcap/store/graphite/storage/rrd
     chown vcap:vcap /var/vcap/store/graphite/storage/whisper
