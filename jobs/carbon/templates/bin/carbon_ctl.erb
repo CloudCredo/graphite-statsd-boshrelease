@@ -21,7 +21,7 @@ case $1 in
     # Set file permissions
     chown -RH vcap:vcap /var/vcap/sys/log/carbon
     chown -RH vcap:vcap /var/vcap/sys/run/carbon
-    chown -RH vcap:vcap /var/vcap/store/graphite
+    chown -H vcap:vcap /var/vcap/store/graphite
 
     <% if p('carbon.prune_delay') != -1 %>
     ln -sf /var/vcap/jobs/carbon/bin/prune_metrics /etc/cron.daily/prune_metrics
